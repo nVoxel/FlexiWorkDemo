@@ -22,11 +22,14 @@ import androidx.navigation.NavDestination
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 import com.voxeldev.flexiworkdemo.screens.CreateAccountScreen
+import com.voxeldev.flexiworkdemo.screens.DEFAULT_COWORKING_ID
 import com.voxeldev.flexiworkdemo.screens.DetailsScreen
 import com.voxeldev.flexiworkdemo.screens.FavoritesScreen
 import com.voxeldev.flexiworkdemo.screens.HomeScreen
@@ -104,39 +107,42 @@ fun MainNavHost(
                 navController = navHostController,
                 startDestination = startDestination.routeWithArguments,
             ) {
-                composable(NavigationScreen.Welcome.routeWithArguments) {
+                composable(route = NavigationScreen.Welcome.routeWithArguments) {
                     WelcomeScreen()
                 }
 
-                composable(NavigationScreen.CreateAccount.routeWithArguments) {
+                composable(route = NavigationScreen.CreateAccount.routeWithArguments) {
                     CreateAccountScreen()
                 }
 
-                composable(NavigationScreen.Favorites.routeWithArguments) {
+                composable(route = NavigationScreen.Favorites.routeWithArguments) {
                     FavoritesScreen()
                 }
 
-                composable(NavigationScreen.Home.routeWithArguments) {
+                composable(route = NavigationScreen.Home.routeWithArguments) {
                     HomeScreen()
                 }
 
-                composable(NavigationScreen.Search.routeWithArguments) {
+                composable(route = NavigationScreen.Search.routeWithArguments) {
                     SearchScreen()
                 }
 
-                composable(NavigationScreen.List.routeWithArguments) {
+                composable(route = NavigationScreen.List.routeWithArguments) {
                     ListScreen()
                 }
 
-                composable(NavigationScreen.Details.routeWithArguments) {
-                    DetailsScreen()
+                composable(
+                    route = NavigationScreen.Details.routeWithArguments,
+                    arguments = listOf(navArgument(name = "coworkingId") { type = NavType.IntType }),
+                ) {
+                    DetailsScreen(it.arguments?.getInt("coworkingId") ?: DEFAULT_COWORKING_ID)
                 }
 
-                composable(NavigationScreen.Map.routeWithArguments) {
+                composable(route = NavigationScreen.Map.routeWithArguments) {
                     MapScreen()
                 }
 
-                composable(NavigationScreen.Profile.routeWithArguments) {
+                composable(route = NavigationScreen.Profile.routeWithArguments) {
                     ProfileScreen()
                 }
             }

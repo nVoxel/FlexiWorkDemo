@@ -50,7 +50,7 @@ sealed class NavigationScreen(
 
     data object Details : NavigationScreen(
         route = "details",
-        routeWithArguments = "details/{bookingId}",
+        routeWithArguments = "details/{coworkingId}",
     )
 
     data object Map : NavigationScreen(

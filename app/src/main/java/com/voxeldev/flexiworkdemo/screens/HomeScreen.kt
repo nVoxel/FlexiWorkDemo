@@ -131,7 +131,9 @@ fun HomeScreen() {
 
         CoworkingList(
             list = coworkings,
-            onCoworkingClicked = {},
+            onCoworkingClicked = { id ->
+                navController.navigate(NavigationScreen.Details.route!! + "/$id")
+            },
         )
 
         Spacer(modifier = Modifier.height(height = 32.dp))
