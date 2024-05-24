@@ -1,5 +1,6 @@
 package com.voxeldev.flexiworkdemo.screens
 
+import android.content.res.Configuration
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -71,9 +72,17 @@ fun WelcomeScreen() {
     }
 }
 
-@Preview
+@Preview(uiMode = Configuration.UI_MODE_NIGHT_NO)
 @Composable
-private fun WelcomeScreenPreview() {
+private fun WelcomeScreenPreviewLight() {
+    PreviewBase {
+        WelcomeScreen()
+    }
+}
+
+@Preview(uiMode = Configuration.UI_MODE_NIGHT_YES)
+@Composable
+private fun WelcomeScreenPreviewDark() {
     PreviewBase {
         WelcomeScreen()
     }
