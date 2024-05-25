@@ -16,7 +16,6 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.Visibility
 import androidx.compose.material.icons.filled.VisibilityOff
-import androidx.compose.material3.Button
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -240,16 +239,9 @@ private fun CityList(
 }
 
 @Preview(uiMode = Configuration.UI_MODE_NIGHT_NO)
-@Composable
-private fun CreateAccountScreenPreviewLight() {
-    PreviewBase {
-        CreateAccountScreen()
-    }
-}
-
 @Preview(uiMode = Configuration.UI_MODE_NIGHT_YES)
 @Composable
-private fun CreateAccountScreenPreviewDark() {
+private fun CreateAccountScreenPreview() {
     PreviewBase {
         CreateAccountScreen()
     }

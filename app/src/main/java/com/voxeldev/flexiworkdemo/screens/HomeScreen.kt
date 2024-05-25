@@ -278,16 +278,9 @@ private fun CategoryListItem(
 }
 
 @Preview(uiMode = Configuration.UI_MODE_NIGHT_NO)
-@Composable
-private fun HomeScreenPreviewLight() {
-    PreviewBase {
-        HomeScreen()
-    }
-}
-
 @Preview(uiMode = Configuration.UI_MODE_NIGHT_YES)
 @Composable
-private fun HomeScreenPreviewDark() {
+private fun HomeScreenPreview() {
     PreviewBase {
         HomeScreen()
     }

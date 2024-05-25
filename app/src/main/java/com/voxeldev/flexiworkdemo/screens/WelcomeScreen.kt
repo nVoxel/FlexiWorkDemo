@@ -71,16 +71,9 @@ fun WelcomeScreen() {
 }
 
 @Preview(uiMode = Configuration.UI_MODE_NIGHT_NO)
-@Composable
-private fun WelcomeScreenPreviewLight() {
-    PreviewBase {
-        WelcomeScreen()
-    }
-}
-
 @Preview(uiMode = Configuration.UI_MODE_NIGHT_YES)
 @Composable
-private fun WelcomeScreenPreviewDark() {
+private fun WelcomeScreenPreview() {
     PreviewBase {
         WelcomeScreen()
     }

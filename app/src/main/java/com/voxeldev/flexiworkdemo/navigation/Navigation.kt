@@ -17,6 +17,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination
 import androidx.navigation.NavDestination.Companion.hierarchy
@@ -28,6 +29,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import com.voxeldev.flexiworkdemo.navigation.sharedviewmodels.FavoritesViewModel
 import com.voxeldev.flexiworkdemo.screens.CreateAccountScreen
 import com.voxeldev.flexiworkdemo.screens.DEFAULT_COWORKING_ID
 import com.voxeldev.flexiworkdemo.screens.DetailsScreen
@@ -100,6 +102,8 @@ fun MainNavHost(
             }
         }
     ) { paddingValues ->
+        val favoritesViewModel = viewModel<FavoritesViewModel>()
+
         CompositionLocalProvider(LocalNavController provides navHostController) {
             NavHost(
                 modifier = Modifier
@@ -116,7 +120,7 @@ fun MainNavHost(
                 }
 
                 composable(route = NavigationScreen.Favorites.routeWithArguments) {
-                    FavoritesScreen()
+                    FavoritesScreen(favoritesViewModel = favoritesViewModel)
                 }
 
                 composable(route = NavigationScreen.Home.routeWithArguments) {
@@ -128,7 +132,7 @@ fun MainNavHost(
                 }
 
                 composable(route = NavigationScreen.List.routeWithArguments) {
-                    ListScreen()
+                    ListScreen(favoritesViewModel = favoritesViewModel)
                 }
 
                 composable(

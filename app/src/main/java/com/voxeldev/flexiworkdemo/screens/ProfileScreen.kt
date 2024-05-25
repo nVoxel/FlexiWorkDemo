@@ -15,16 +15,9 @@ fun ProfileScreen() {
 }
 
 @Preview(uiMode = Configuration.UI_MODE_NIGHT_NO)
-@Composable
-private fun ProfileScreenPreviewLight() {
-    PreviewBase {
-        ProfileScreen()
-    }
-}
-
 @Preview(uiMode = Configuration.UI_MODE_NIGHT_YES)
 @Composable
-private fun ProfileScreenPreviewDark() {
+private fun ProfileScreenPreview() {
     PreviewBase {
         ProfileScreen()
     }

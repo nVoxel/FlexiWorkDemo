@@ -176,16 +176,9 @@ private fun DateSelectListItem(dataSelect: DateSelect) {
 }
 
 @Preview(uiMode = Configuration.UI_MODE_NIGHT_NO)
-@Composable
-private fun DetailsScreenPreviewLight() {
-    PreviewBase {
-        DetailsScreen(coworkingId = DEFAULT_COWORKING_ID)
-    }
-}
-
 @Preview(uiMode = Configuration.UI_MODE_NIGHT_YES)
 @Composable
-private fun DetailsScreenPreviewDark() {
+private fun DetailsScreenPreview() {
     PreviewBase {
         DetailsScreen(coworkingId = DEFAULT_COWORKING_ID)
     }

@@ -109,16 +109,9 @@ private fun ListButton(
 }
 
 @Preview(uiMode = Configuration.UI_MODE_NIGHT_NO)
-@Composable
-private fun MapScreenPreviewLight() {
-    PreviewBase {
-        MapScreen()
-    }
-}
-
 @Preview(uiMode = Configuration.UI_MODE_NIGHT_YES)
 @Composable
-private fun MapScreenPreviewDark() {
+private fun MapScreenPreview() {
     PreviewBase {
         MapScreen()
     }
