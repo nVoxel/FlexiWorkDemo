@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">FlexiWork Demo</string>
+    <string name="ic_back_button">Назад</string>
+    <string name="image_cowork">Фото коворка</string>
+    <string name="ic_next_button">Дальше</string>
 </resources>
