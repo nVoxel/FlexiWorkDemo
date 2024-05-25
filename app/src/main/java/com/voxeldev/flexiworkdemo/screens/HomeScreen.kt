@@ -21,11 +21,9 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowForward
-import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.OutlinedCard
 import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -34,7 +32,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.drawBehind
-import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
@@ -47,6 +44,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.voxeldev.flexiworkdemo.components.ClickableOutlinedTextField
+import com.voxeldev.flexiworkdemo.components.FlexiElevatedCard
 import com.voxeldev.flexiworkdemo.components.PreviewBase
 import com.voxeldev.flexiworkdemo.models.Category
 import com.voxeldev.flexiworkdemo.models.Coworking
@@ -181,16 +179,9 @@ private fun CoworkingListItem(
     coworking: Coworking,
     onClick: () -> Unit,
 ) {
-    OutlinedCard(
+    FlexiElevatedCard(
         modifier = Modifier
-            .shadow(
-                elevation = 3.dp,
-                shape = RoundedCornerShape(size = 20.dp),
-            )
             .clickable(onClick = onClick),
-        shape = RoundedCornerShape(size = 20.dp),
-        border = CardDefaults.outlinedCardBorder(enabled = false),
-        colors = CardDefaults.elevatedCardColors(containerColor = MaterialTheme.colorScheme.background),
     ) {
         Column(
             modifier = Modifier
@@ -259,16 +250,9 @@ private fun CategoryListItem(
             .clickable(onClick = onClick),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
-        OutlinedCard(
+        FlexiElevatedCard(
             modifier = Modifier
-                .size(size = 70.dp)
-                .shadow(
-                    elevation = 3.dp,
-                    shape = RoundedCornerShape(size = 20.dp),
-                ),
-            shape = RoundedCornerShape(size = 20.dp),
-            border = CardDefaults.outlinedCardBorder(enabled = false),
-            colors = CardDefaults.elevatedCardColors(containerColor = MaterialTheme.colorScheme.background),
+                .size(size = 70.dp),
         ) {
             Box(
                 modifier = Modifier
