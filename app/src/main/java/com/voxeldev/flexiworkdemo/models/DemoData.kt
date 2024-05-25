@@ -132,3 +132,16 @@ val coworkingList = listOf(
         image = R.drawable.coworking10,
     )
 )
+
+val dateSelectList = listOf(
+    DateSelect(
+        0,
+        "Select Date",
+        "Today"
+    ),
+    DateSelect(
+        1,
+        "Select Time",
+        "21:30"
+    )
+)
