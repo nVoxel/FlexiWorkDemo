@@ -3,7 +3,6 @@ package com.voxeldev.flexiworkdemo.screens
 import android.content.res.Configuration
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
@@ -11,22 +10,19 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.LargeTopAppBar
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.OutlinedCard
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.rememberTopAppBarState
+import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
@@ -34,19 +30,19 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.LineHeightStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.voxeldev.flexiworkdemo.R
 import com.voxeldev.flexiworkdemo.components.BackButton
+import com.voxeldev.flexiworkdemo.components.FlexiElevatedCard
 import com.voxeldev.flexiworkdemo.components.PreviewBase
 import com.voxeldev.flexiworkdemo.components.SelectButton
 import com.voxeldev.flexiworkdemo.components.TextInfoButton
@@ -80,7 +76,7 @@ fun DetailsScreen(
             .nestedScroll(connection = scrollBehavior.nestedScrollConnection),
         topBar = {
             LargeTopAppBar(
-                actions = {
+                navigationIcon = {
                     BackButton {
                         navController.navigateUp()
                     }
@@ -132,10 +128,6 @@ fun DetailsScreen(
             Spacer(modifier = Modifier.height(height = 8.dp))
 
             TextInfoButton(onClick = { /*TODO*/ }, text = "Отмена")
-
-
-
-
         }
 
     }
@@ -151,51 +143,34 @@ private fun DateSelectList(
         contentPadding = PaddingValues(horizontal = 16.dp),
         horizontalArrangement = Arrangement.spacedBy(space = 16.dp),
     ) {
-        items(items = list, key = { it.id} ) {dateSelect ->
-            DateSelectListItem(
-                dataSelect = dateSelect
-            )
+        items(items = list, key = { it.id } ) {dateSelect ->
+            DateSelectListItem(dataSelect = dateSelect)
         }
     }
 }
 
 @Composable
-private fun DateSelectListItem(
-    dataSelect: DateSelect
-) {
-    OutlinedCard(
-        modifier = Modifier
-            .shadow(
-                elevation = 3.dp,
-                shape = RoundedCornerShape(size = 20.dp)
-            ),
-        shape = RoundedCornerShape(size = 20.dp),
-        border = CardDefaults.outlinedCardBorder(enabled = false),
-        colors = CardDefaults.elevatedCardColors(containerColor = MaterialTheme.colorScheme.background),
-    ) {
+private fun DateSelectListItem(dataSelect: DateSelect) {
+    FlexiElevatedCard {
         Column(
-            modifier = Modifier
-
+            horizontalAlignment = Alignment.CenterHorizontally,
         ) {
             SelectButton(
                 text = dataSelect.selectTitle,
                 onClick = {}
             )
 
-            Spacer(modifier = Modifier.height(height = 8.dp))
-
+            Spacer(modifier = Modifier.height(height = 16.dp))
 
             Text(
-                modifier = Modifier
-                    .width(width = 120.dp),
                 text = dataSelect.selectDate,
                 overflow = TextOverflow.Ellipsis,
                 style = MaterialTheme.typography.bodyLarge,
-                textAlign = TextAlign.Center
+                textAlign = TextAlign.Center,
+                fontSize = 20.sp,
             )
 
-            Spacer(modifier = Modifier.height(height = 4.dp))
-
+            Spacer(modifier = Modifier.height(height = 24.dp))
         }
     }
 }
