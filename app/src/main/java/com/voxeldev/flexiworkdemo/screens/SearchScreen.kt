@@ -460,7 +460,7 @@ private fun clearList(list: SnapshotStateList<Boolean>) {
     }
 }
 
-@Preview(uiMode = Configuration.UI_MODE_NIGHT_NO)
+@Preview(uiMode = Configuration.UI_MODE_NIGHT_NO, device = "spec:width=1080px,height=4500px,dpi=440")
 @Composable
 private fun SearchScreenPreviewLight() {
     PreviewBase {
@@ -468,7 +468,7 @@ private fun SearchScreenPreviewLight() {
     }
 }
 
-@Preview(uiMode = Configuration.UI_MODE_NIGHT_YES)
+@Preview(uiMode = Configuration.UI_MODE_NIGHT_YES, device = "spec:width=1080px,height=4500px,dpi=440")
 @Composable
 private fun SearchScreenPreviewDark() {
     PreviewBase {
