@@ -123,15 +123,15 @@ fun DetailsScreen(
 
             Spacer(modifier = Modifier.height(height = 16.dp))
 
-            TextInfoButton(onClick = { /*TODO*/ }, text = "View Amenities")
+            TextInfoButton(onClick = { /*TODO*/ }, text = "Просмотр места")
 
             Spacer(modifier = Modifier.height(height = 8.dp))
 
-            TextInfoButton(onClick = { /*TODO*/ }, text = "Contact Space Manager")
+            TextInfoButton(onClick = { /*TODO*/ }, text = "Связаться с менеджером")
 
             Spacer(modifier = Modifier.height(height = 8.dp))
 
-            TextInfoButton(onClick = { /*TODO*/ }, text = "Cancel")
+            TextInfoButton(onClick = { /*TODO*/ }, text = "Отмена")
 
 
 

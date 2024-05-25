@@ -136,12 +136,12 @@ val coworkingList = listOf(
 val dateSelectList = listOf(
     DateSelect(
         0,
-        "Select Date",
-        "Today"
+        "Выберите дату",
+        "Сегодня"
     ),
     DateSelect(
         1,
-        "Select Time",
+        "Выберите время",
         "21:30"
     )
 )
