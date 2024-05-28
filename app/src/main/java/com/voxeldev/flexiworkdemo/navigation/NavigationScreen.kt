@@ -64,4 +64,9 @@ sealed class NavigationScreen(
         icon = Icons.Outlined.Person,
         title = "Профиль",
     )
+
+    data object Reservations : NavigationScreen(
+        routeWithArguments = "reservations",
+
+    )
 }
