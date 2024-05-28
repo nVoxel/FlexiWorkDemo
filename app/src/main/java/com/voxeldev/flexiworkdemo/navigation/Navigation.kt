@@ -30,6 +30,7 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.voxeldev.flexiworkdemo.navigation.sharedviewmodels.FavoritesViewModel
+import com.voxeldev.flexiworkdemo.navigation.sharedviewmodels.ReservationsViewModel
 import com.voxeldev.flexiworkdemo.screens.CreateAccountScreen
 import com.voxeldev.flexiworkdemo.screens.DEFAULT_COWORKING_ID
 import com.voxeldev.flexiworkdemo.screens.DetailsScreen
@@ -38,6 +39,7 @@ import com.voxeldev.flexiworkdemo.screens.HomeScreen
 import com.voxeldev.flexiworkdemo.screens.ListScreen
 import com.voxeldev.flexiworkdemo.screens.MapScreen
 import com.voxeldev.flexiworkdemo.screens.ProfileScreen
+import com.voxeldev.flexiworkdemo.screens.ReservationsScreen
 import com.voxeldev.flexiworkdemo.screens.SearchScreen
 import com.voxeldev.flexiworkdemo.screens.WelcomeScreen
 
@@ -103,6 +105,7 @@ fun MainNavHost(
         }
     ) { paddingValues ->
         val favoritesViewModel = viewModel<FavoritesViewModel>()
+        val reservationsViewModel = viewModel<ReservationsViewModel>()
 
         CompositionLocalProvider(LocalNavController provides navHostController) {
             NavHost(
@@ -123,6 +126,10 @@ fun MainNavHost(
                     FavoritesScreen(favoritesViewModel = favoritesViewModel)
                 }
 
+                composable(route = NavigationScreen.Reservations.routeWithArguments) {
+                    ReservationsScreen(reservationsViewModel = reservationsViewModel)
+                }
+
                 composable(route = NavigationScreen.Home.routeWithArguments) {
                     HomeScreen()
                 }
@@ -139,7 +146,7 @@ fun MainNavHost(
                     route = NavigationScreen.Details.routeWithArguments,
                     arguments = listOf(navArgument(name = "coworkingId") { type = NavType.IntType }),
                 ) {
-                    DetailsScreen(it.arguments?.getInt("coworkingId") ?: DEFAULT_COWORKING_ID)
+                    DetailsScreen(it.arguments?.getInt("coworkingId") ?: DEFAULT_COWORKING_ID, reservationsViewModel = reservationsViewModel)
                 }
 
                 composable(route = NavigationScreen.Map.routeWithArguments) {

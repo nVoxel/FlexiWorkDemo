@@ -6,6 +6,9 @@ import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material.icons.filled.MeetingRoom
 import androidx.compose.material.icons.filled.WavingHand
 import com.voxeldev.flexiworkdemo.R
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
+import java.util.Random
 
 val categoryList = listOf(
     Category(
@@ -156,15 +159,62 @@ val placeTypeData = listOf(
     "Для мероприятий",
 )
 
-val dateSelectList = listOf(
-    DateSelect(
-        0,
-        "Выберите дату",
-        "Сегодня"
-    ),
-    DateSelect(
-        1,
-        "Выберите время",
-        "21:30"
+val dateSelectList: List<DateSelect>
+    get() = listOf(
+        DateSelect(
+            0,
+            "Выберите дату",
+            date
+        ),
+        DateSelect(
+            1,
+            "Выберите время",
+            time
+        )
     )
+
+val userExample = User(
+    userId = 1,
+    username = "Огурчик Кунжутович",
+    email = "cucumber@mail.ru",
+    password = "WSDWDmKWMddaldwmdkamdmakwdkmeadaedwdawd", // какой-то hash, но в реальности хранится в бд у сервера
+    addressId = "116",
+    street = "Кремлевская",
+    city = "Казань"
 )
+
+val paymentListExample: List<Payment>
+    get() = listOf(
+        Payment(
+            paymentId = 0,
+            coworkingId = 0,
+            proof = false,
+            dateTime = "$date $time",
+            paymentType = "наличка"
+        ),
+        Payment(
+            paymentId = 1,
+            coworkingId = 0,
+            proof = true,
+            dateTime = "$date $time",
+            paymentType = "СБП"
+        )
+    )
+
+val currentTime = LocalDateTime.now()
+
+val dateFormatter = DateTimeFormatter.ofPattern("dd.MM.yyyy")
+val timeFormatter = DateTimeFormatter.ofPattern("HH:mm")
+
+val date = currentTime.format(dateFormatter)
+val time = currentTime.format(timeFormatter)
+
+val dateTime = "$date $time"
+
+val random = Random()
+val paymentTypes = listOf("наличка", "карта", "СБП")
+//val paymentType = paymentTypes[random.nextInt(paymentTypes.size)]
+
+
+val proofType = listOf(false, true)
+//val proof = proofType[random.nextInt(proofType.size)]

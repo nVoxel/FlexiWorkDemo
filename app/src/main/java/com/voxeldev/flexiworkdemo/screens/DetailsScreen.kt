@@ -24,6 +24,7 @@ import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.rememberTopAppBarState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
@@ -40,6 +41,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.voxeldev.flexiworkdemo.R
 import com.voxeldev.flexiworkdemo.components.BackButton
 import com.voxeldev.flexiworkdemo.components.FlexiElevatedCard
@@ -50,6 +52,8 @@ import com.voxeldev.flexiworkdemo.models.DateSelect
 import com.voxeldev.flexiworkdemo.models.coworkingList
 import com.voxeldev.flexiworkdemo.models.dateSelectList
 import com.voxeldev.flexiworkdemo.navigation.LocalNavController
+import com.voxeldev.flexiworkdemo.navigation.NavigationScreen
+import com.voxeldev.flexiworkdemo.navigation.sharedviewmodels.ReservationsViewModel
 
 const val DEFAULT_COWORKING_ID = 0
 
@@ -61,6 +65,7 @@ const val DEFAULT_COWORKING_ID = 0
 @Composable
 fun DetailsScreen(
     coworkingId: Int,
+    reservationsViewModel: ReservationsViewModel
 ) {
     val navController = LocalNavController.current
 
@@ -70,6 +75,8 @@ fun DetailsScreen(
 
     val coworkingName by rememberSaveable { mutableStateOf(coworkingList[coworkingId].name) }
     val coworkingImage by rememberSaveable { mutableIntStateOf(coworkingList[coworkingId].image) }
+
+    val reservations by reservationsViewModel.booked.observeAsState()
 
     Scaffold(
         modifier = Modifier
@@ -127,7 +134,10 @@ fun DetailsScreen(
 
             Spacer(modifier = Modifier.height(height = 8.dp))
 
-            TextInfoButton(onClick = { /*TODO*/ }, text = "Отмена")
+            SelectButton(onClick = {
+                reservationsViewModel.addBooked(coworkingId)
+                navController.navigate(NavigationScreen.Reservations.routeWithArguments)
+            }, text = "Забронировать")
         }
 
     }
@@ -143,7 +153,7 @@ private fun DateSelectList(
         contentPadding = PaddingValues(horizontal = 16.dp),
         horizontalArrangement = Arrangement.spacedBy(space = 16.dp),
     ) {
-        items(items = list, key = { it.id } ) {dateSelect ->
+        items(items = list, key = { it.id }) { dateSelect ->
             DateSelectListItem(dataSelect = dateSelect)
         }
     }
@@ -180,6 +190,6 @@ private fun DateSelectListItem(dataSelect: DateSelect) {
 @Composable
 private fun DetailsScreenPreview() {
     PreviewBase {
-        DetailsScreen(coworkingId = DEFAULT_COWORKING_ID)
+        DetailsScreen(coworkingId = DEFAULT_COWORKING_ID, reservationsViewModel = viewModel())
     }
 }

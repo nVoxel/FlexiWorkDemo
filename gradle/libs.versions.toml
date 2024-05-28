@@ -12,7 +12,7 @@ compose-compiler-extension = "1.5.6"
 version-name = "1.0"
 version-code = "1"
 
-agp = "8.3.2"
+agp = "8.4.1"
 jvm-target = "1.8"
 kotlin = "2.0.0"
 
